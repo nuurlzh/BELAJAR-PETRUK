@@ -1,0 +1,70 @@
+#include <iostream> //mengimpor library untuk melakukan operasi input/output dan manipulasi string
+#include <cstring>
+
+using namespace std;
+
+class Buku { //mendefinisikan class buku yg memiliki 5 variabel anggota
+  public:
+    char judul[100]; //variabel = menyimpan data dari masing2 buku
+    char pengarang[100];
+    char penerbit[100];
+    int tahunTerbit;
+    int jumlahHalaman;
+};
+
+//mendefinisikan beberapa fungsi untuk melakukan operasi pada data buku
+void tambahBuku(Buku *daftarBuku, int *jumlahBuku) {
+  Buku bukuBaru;
+  cout << "Masukkan judul buku: "; //memminta input dari user untuk mengisi informasi buku
+  cin.getline(bukuBaru.judul, 100);
+  cout << "Masukkan nama pengarang: ";
+  cin.getline(bukuBaru.pengarang, 100);
+  cout << "Masukkan nama penerbit: ";
+  cin.getline(bukuBaru.penerbit, 100);
+  cout << "Masukkan tahun terbit: ";
+  cin >> bukuBaru.tahunTerbit;
+  cout << "Masukkan jumlah halaman: ";
+  cin >> bukuBaru.jumlahHalaman;
+  cin.ignore();
+  
+  daftarBuku[*jumlahBuku] = bukuBaru;
+  (*jumlahBuku)++;
+}
+
+//array
+void hapusBuku(Buku *daftarBuku, int *jumlahBuku, char *judulBuku) {
+  int indeks = -1;
+  for (int i = 0; i < *jumlahBuku; i++) {
+    if (strcmp(daftarBuku[i].judul, judulBuku) == 0) {
+      indeks = i;
+      break;
+    }
+  }
+  if (indeks == -1) {
+    cout << "Buku dengan judul " << judulBuku << " tidak ditemukan." << endl;
+  } else {
+    for (int i = indeks; i < *jumlahBuku - 1; i++) {
+      daftarBuku[i] = daftarBuku[i+1];
+    }
+    (*jumlahBuku)--;
+    cout << "Buku dengan judul " << judulBuku << " telah dihapus." << endl;
+  }
+}
+
+void cariBuku(Buku *daftarBuku, int jumlahBuku, char *kataKunci) {
+  int jumlahDitemukan = 0;
+  for (int i = 0; i < jumlahBuku; i++) {
+    if (strstr(daftarBuku[i].judul, kataKunci) != NULL || strstr(daftarBuku[i].pengarang, kataKunci) != NULL) {
+      cout << "Judul: " << daftarBuku[i].judul << endl;
+      cout << "Pengarang: " << daftarBuku[i].pengarang << endl;
+      cout << "Penerbit: " << daftarBuku[i].penerbit << endl;
+      cout << "Tahun Terbit: " << daftarBuku[i].tahunTerbit << endl;
+      cout << "
+
+//Di dalam main(), kita membuat array daftarBuku yang bertipe Buku dan variabel jumlahBuku untuk menyimpan
+// jumlah buku yang ada di dalam array. 
+// Kita juga membuat variabel pilihan untuk
+// menyimpan input dari user untuk memilih operasi
+// yang akan dilakukan. Selanjutnya, kita menggunakan 
+// loop while untuk terus menampilkan menu operasi kepada
+// user sampai user memilih untuk keluar dari program.
