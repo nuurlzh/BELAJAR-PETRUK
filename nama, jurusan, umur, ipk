@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+class Mahasiswa { //mendefinisikan class mahasiswa yg memiliki 4 variabel
+    private:
+        char* nama;
+        char* jurusan;
+        int umur;
+        float ipk;
+        
+    public:
+        Mahasiswa(char* n, char* j, int u, float i) { //constractor
+            nama = new char[strlen(n)+1]; //untuk mendapatkan panjangstring yg disimpan pd variabel n dan j,
+            //kemudian ditambah 1 u/ memberikan ruang untuk karakter null terminator
+            strcpy(nama, n); //untuk menyalin string dari variabel n dan j ke variabel nama dan jurusan
+            jurusan = new char[strlen(j)+1];
+            strcpy(jurusan, j);
+            umur = u;
+            ipk = i;
+        }
+        
+        ~Mahasiswa() { //destructoc
+            delete[] nama;
+            delete[] jurusan;
+        }
+        
+        void tampilkanData() { //method
+            cout << "Nama: " << nama << endl;
+            cout << "Jurusan: " << jurusan << endl;
+            cout << "Umur: " << umur << endl;
+            cout << "IPK: " << ipk << endl;
+        }
+};
+
+int main() { //membuat pointer mhsPtr yg menunjuk ke objek mahasiswa
+    Mahasiswa* mhsPtr;
+    mhsPtr = new Mahasiswa("Budi", "Teknik Informatika", 20, 3.5);
+    mhsPtr->tampilkanData(); // tanda -> untuk memanggil method 'tampilkanData()' dari objek yg ditunjuk oleh mhsPts
+    delete mhsPtr;
+    return 0;
+}
