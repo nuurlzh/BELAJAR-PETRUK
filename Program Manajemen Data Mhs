@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+class Mahasiswa { //mendefinisikan sebuah class yg bernama mahasiswa yg memiliki 2 variabel
+  public:
+    char nama[50]; //yg bertipe char array
+    int nim; // dan nim int
+    void printData() { //mendefinisikan sebuah fungsi printData() untuk mencetak data mahasiswa ke layar
+      cout << "Nama: " << nama << endl;
+      cout << "NIM: " << nim << endl;
+    }
+};
+
+void changeData(Mahasiswa *mhs, char *newName) { //mendefinisikan sebuah fungsi yg menerima parameter pointer ke objek mhs dan pinter char array newName, mengubah nilai nama dari objek mahasiswa
+  strcpy(mhs->nama, newName);
+}
+
+int main() {
+  Mahasiswa mhs;
+  char newName[50] = "Joko Widodo";
+  strcpy(mhs.nama, "Nurul Izzah");
+  mhs.nim = 12345;
+  mhs.printData();
+  changeData(&mhs, newName); //memannggil fungsi changedata
+  mhs.printData();
+  return 0;
+}
+
+//Penjelasan program di atas:
+
+//Pertama, kita mendefinisikan sebuah class bernama Mahasiswa yang memiliki dua variabel data yaitu nama bertipe char array dan nim bertipe int. Kemudian, kita juga mendefinisikan sebuah fungsi printData() yang digunakan untuk mencetak data mahasiswa ke layar.
+//Selanjutnya, kita mendefinisikan sebuah fungsi changeData() yang menerima parameter pointer ke objek Mahasiswa dan pointer ke char array newName. Fungsi ini digunakan untuk mengubah nilai nama dari objek Mahasiswa.
+//Di dalam fungsi main(), kita membuat sebuah objek Mahasiswa dengan nama mhs. Kemudian, kita mengisi nilai nama dan nim dari objek mhs dan mencetak data tersebut ke layar menggunakan fungsi printData().
+//Selanjutnya, kita memanggil fungsi changeData() dan memberikan parameter pointer ke objek mhs dan pointer ke char array newName. Setelah itu, kita mencetak data mhs lagi dan nilai nama sudah berubah.
+//Dalam contoh program di atas, kita menggunakan class Mahasiswa untuk menggabungkan data nama dan nim ke dalam satu objek. Kemudian, kita juga menggunakan pointer untuk mengakses objek mhs dan fungsi changeData(). Selain itu, kita juga menggunakan cstring untuk mengolah string.
