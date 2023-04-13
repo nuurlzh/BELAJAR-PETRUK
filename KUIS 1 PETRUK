@@ -1,0 +1,51 @@
+Buatlah sebuah program yang berisi macro untuk mencetak bilangan terkecil. bilangan tersebut merupakan bilangan 2 digit terakhir dari 2217051022
+
+#include <iostream>
+#define MIN_DIGIT (22) // 2 digit terakhir dari bilangan 2217051022
+using namespace std;
+
+int main() {
+    int digit = MIN_DIGIT;
+    cout << "Bilangan terkecil dari digit ke-9 dan ke-10 dari bilangan 2217051022 adalah: " << digit << endl;
+    return 0;
+    
+    
+    3. Buatlah program yang memiliki sebuah pointer yang menyimpan nilai dua digit NPM terakhir anda, output yang diharapkan adalah isi pointer dan alamat tempat data NPM anda tersebut disimpan.
+    
+    #include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {2, 2, 1, 7, 0, 5, 1, 0, 2, 2}; // menyimpan bilangan 2217051022 dalam bentuk array
+    int *ptr = &arr[8]; // pointer menunjuk ke elemen ke-9 dari array (dua digit terakhir)
+    int *ptr_digit10 = &arr[9];
+
+    // Mengambil nilai pointer
+    int value = *ptr;
+    int value2 = *ptr_digit10;
+
+    // Mencetak nilai pointer dan alamat tempat data disimpan
+    cout << "Nilai pointer: " << value << value2 << endl;
+    cout << "Alamat tempat data disimpan: " << ptr << endl;
+
+    return 0;
+}
+
+Buatlah sebuah program yang memiliki fungsi rekrusif yang mengalikan digit ke 10 npm anda sebanyak x kali dimana x merupakan nilai digit ke 9 NPM anda masing2
+
+#include <iostream>
+using namespace std;
+
+int multiplyTwo(int n) {
+    if (n == 0) {
+        return 1;
+    } else {
+        return 2 * multiplyTwo(n - 1);
+    }
+}
+
+int main() {
+    int result = multiplyTwo(2);
+    cout << "Hasil perkalian 2 sebanyak 2 kali adalah: " << result << endl;
+    return 0;
+}
